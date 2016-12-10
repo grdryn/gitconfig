@@ -1,0 +1,48 @@
+# 🎨 Improve structure / format of the code
+# ⚡ Improve performance
+# 🔥 Remove code or files
+# 🐛 Fix a bug
+# 🚑 Critical hotfix
+# ✨ Introduce new features
+# 📝 Write docs
+# 🚀 Deploy stuff
+# 💄 Update the UI and style files
+# 🎉 Initial commit
+# ✅ Add tests
+# 🔒 Fix security issues
+# 🍎 Fix something on macOS
+# 🐧 Fix something on Linux
+# 🏁 Fix something on Windows
+# 🔖 Release / Version tags
+# 🚨 Remove linter warnings
+# 🚧 Work in progress
+# 💚 Fix CI Build
+# ⬇ Downgrade dependencies
+# ⬆ Upgrade dependencies
+# 👷 Add CI build system
+# 📈 Add analytics or tracking code
+# 🔨 Heavy refactoring
+# ➖ Remove a dependency
+# 🐳 Change Docker stuff
+# ➕ Add a dependency
+# 🔧 Change configuration files
+# 🌐 Internationalization and localization
+# :pencil2: Fix typo # renders better on github than ✏
+# 💩 Write bad code that needs to be improved
+# 📦 Update compiled files or packages
+# ⏪ Revert changes
+# 🔀 Merge branches
+# 📦 Update compiled files or packages
+# 👽 Update code due to external dependencies
+# 🚚 Move or rename files
+# 📄 Add or update license
+
+# JIRA_PLACEHOLDER
+
+# Motivation:
+
+
+# Modification:
+
+
+# Result:

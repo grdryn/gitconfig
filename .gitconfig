@@ -1,0 +1,77 @@
+[user]
+	name = Gerard Ryan
+	email = gerard@ryan.lt
+	signingkey = 8A617903604095DC
+
+[core]
+	excludesfile = ~/.gitignore
+	quotepath = false
+	autocrlf = input
+	safecrlf = warn
+	editor = emacsclient -t -a emacs
+
+[alias]
+	br = branch
+	ci = commit -a
+	co = checkout
+	d = diff --color-words
+	who = shortlog -s --
+	lg = log --graph --all --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+	lpo = log --pretty=oneline --abbrev-commit --graph --decorate --all
+	scrub = !git reset --hard && git clean -fd
+	rv = remote -v
+	g = !exec gitg --all&
+	k = !exec gitk --all&
+	st = status
+	blg = log --graph --decorate --all --abbrev-commit --pretty=oneline
+	slog = log --graph --simplify-by-decoration --all --abbrev-commit --pretty=oneline
+	shorten = "!sh -c 'curl -i https://git.io -F url=$1' -"
+	pushnotes = !sh -c 'git push $1 refs/notes/*' -
+	fetchnotes = !sh -c 'git fetch $1 refs/notes/*:refs/notes/*' -
+	showignored = ls-files --others --ignored --exclude-standard
+	showuntracked = ls-files --others --exclude-standard
+	rmmissing = !git rm $(git ls-files --deleted)
+	busythisweek = shortlog --since=one.week.ago -n
+
+	#https://git.wiki.kernel.org/index.php?title=Aliases
+	aliases = !git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /'
+	whitespaceviolations = "!git diff --check $(git empty-tree-sha1)"
+	app = commit -a --amend --no-edit
+	cia = commit -a --amend
+	up = remote update --prune
+
+[apply]
+	whitespace = nowarn
+
+[rerere]
+	enabled = true
+
+[difftool]
+	prompt = false
+
+[diff]
+	tool = meld
+
+[mergetool]
+	prompt = false
+	keepBackup = false
+
+[merge]
+	tool = meld
+
+[hub]
+	protocol = ssh
+
+[gist]
+	private = yes
+	browse = yes
+
+[push]
+	default = current
+
+[commit]
+	template = /home/grdryn/.git-commit-template
+	gpgsign = true
+
+[gpg]
+	program = gpg2
