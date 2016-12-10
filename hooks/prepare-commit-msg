@@ -1,0 +1,70 @@
+#!/usr/bin/env python
+# coding: utf-8
+#
+# Copyright 2016 Gerard Ryan <gerard@ryan.lt>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+# Contributions welcome at:
+# https://github.com/grdryn/gitconfig
+
+import re
+import sys
+
+try:
+    import git
+except ImportError:
+    print('GitPython is needed for {}'.format(sys.argv[0]))
+    quit()
+
+def read_file_lines(msg_file):
+    with open(msg_file, 'r') as f:
+        return f.readlines()
+
+def write_file_lines(msg_file, lines):
+    with open(msg_file, 'w') as f:
+        return f.writelines(lines)
+
+def replace_placeholder(lines, placeholder, replacement):
+    return [l.replace(placeholder, replacement) for l in lines]
+
+def assemble_jira_line():
+    repo                   = git.Repo('.')
+    head                   = repo.active_branch
+    regexp                 = r'^(RHMAP-\d+|FH-\d+)'
+    jira_line_prefix       = 'JIRA: https://issues.jboss.org/browse/'
+    potential_jira_matcher = re.search(regexp, head.name)
+
+    if potential_jira_matcher:
+        return '{}{}'.format(jira_line_prefix, potential_jira_matcher.group(0))
+    else:
+        return ''
+
+def emojify_merge_commit(source, lines):
+    merge_emoji = '🔀'
+    updated = list(lines)
+    if source == 'merge':
+        updated[0] = '{0} {1}'.format(merge_emoji, lines[0])
+    return updated
+
+if __name__ == '__main__':
+    commit_msg_file = sys.argv[1]
+    source = sys.argv[2]
+
+    old_lines   = read_file_lines(commit_msg_file)
+    merge_lines = emojify_merge_commit(source, old_lines)
+    new_lines   = replace_placeholder(merge_lines, '# JIRA_PLACEHOLDER',
+                                            assemble_jira_line())
+
+    write_file_lines(commit_msg_file, new_lines)
