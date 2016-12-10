@@ -1,0 +1,56 @@
+= gitconfig
+
+📝 Some common git configs / hooks / templates that I use
+
+== Global config
+
+The `.gitconfig` file is intended to be (at least part of) a user's
+ global `~/.gitconfig`.
+
+== Commit message template
+
+The `.git-commit-template` is also expected to live in the user's home
+ directory. If you wish to change its name or location on your own
+ system, you'll just need to update the `commit.template` property in
+ the global template. In essence, link:.gitconfig#L73[here].
+
+The main purpose of the commit message template is to make it easier
+ for me to use https://gitmoji.carloscuesta.me/[gitmoji] with my
+ current tooling, rather than installing
+ https://github.com/carloscuesta/gitmoji-cli[gitmoji-cli] (which is
+ also cool if you want to use that).
+
+When I'm committing with magit (emacs 💖), and I'm presented with the
+ template, I'll just uncomment the most relevant emoji summary line,
+ and modify the message to be specific to my commit. I imagine it
+ should work similarly with whatever tools you use.
+
+== prepare-commit-msg hook
+
+The `prepare-commit-msg` hook should be symlinked/copied into the
+`.git/hooks` directory within each repo that you intend to use it for.
+
+There are a couple of things that it does currently:
+
+. If it's a merge commit, it will prefix the summary line with 🔀,
+ because emoji are the future, and this is the one that
+ https://gitmoji.carloscuesta.me/[gitmoji] prescribes for merging
+ branches. 😎
+
+. If http://gitpython.readthedocs.io/en/stable/[GitPython] is
+ installed, and the current branch name starts with either `RHMAP-` or
+ `FH-`, then it will uncomment the `JIRA_PLACEHOLDER` line in the commit
+ message template, and insert a link to the issue on issues.jboss.org.
+
+== Contributing
+
+You want to make this even more awesome? That's great! You can open a
+ PR on Github (or any other repo hosting site that you may find this
+ hosted), or email changes to me. Consider including a relevant
+ gitmoji in the commit message!
+
+If you fork and make your own custom changes but don't want to bother
+ proposing those changes back to the original repo
+ (https://github.com/grdryn/gitconfig), that's cool too; just consider
+ sending me a link anyway so that I can see what cool things you're
+ doing. 😉
