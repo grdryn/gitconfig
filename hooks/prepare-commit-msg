@@ -22,12 +22,6 @@
 import re
 import sys
 
-try:
-    import git
-except ImportError:
-    print('GitPython is needed for {}'.format(sys.argv[0]))
-    quit()
-
 def read_file_lines(msg_file):
     with open(msg_file, 'r') as f:
         return f.readlines()
@@ -40,6 +34,12 @@ def replace_placeholder(lines, placeholder, replacement):
     return [l.replace(placeholder, replacement) for l in lines]
 
 def assemble_jira_line():
+    try:
+        import git
+    except ImportError:
+        print('GitPython is needed for some parts of {}'.format(sys.argv[0]))
+        return ''
+
     repo                   = git.Repo('.')
     head                   = repo.active_branch
     regexp                 = r'^(RHMAP-\d+|FH-\d+)'
