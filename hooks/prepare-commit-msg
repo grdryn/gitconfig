@@ -40,15 +40,18 @@ def assemble_jira_line():
         print('GitPython is needed for some parts of {}'.format(sys.argv[0]))
         return ''
 
-    repo                   = git.Repo('.')
-    head                   = repo.active_branch
-    regexp                 = r'^(RHMAP-\d+|FH-\d+)'
-    jira_line_prefix       = 'JIRA: https://issues.jboss.org/browse/'
-    potential_jira_matcher = re.search(regexp, head.name)
+    try:
+        repo                   = git.Repo('.')
+        head                   = repo.active_branch
+        regexp                 = r'^(RHMAP-\d+|FH-\d+)'
+        jira_line_prefix       = 'JIRA: https://issues.jboss.org/browse/'
+        potential_jira_matcher = re.search(regexp, head.name)
 
-    if potential_jira_matcher:
-        return '{}{}'.format(jira_line_prefix, potential_jira_matcher.group(0))
-    else:
+        if potential_jira_matcher:
+            return '{}{}'.format(jira_line_prefix, potential_jira_matcher.group(0))
+        else:
+            return ''
+    except TypeError:
         return ''
 
 def emojify_merge_commit(source, lines):
