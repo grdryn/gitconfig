@@ -43,7 +43,7 @@ def assemble_jira_line():
     try:
         repo                   = git.Repo('.')
         head                   = repo.active_branch
-        regexp                 = r'^(RHMAP-\d+|FH-\d+)'
+        regexp                 = r'^(RHMAP-\d+|FH-\d+|RAINCATCH-\d+)'
         jira_line_prefix       = 'JIRA: https://issues.jboss.org/browse/'
         potential_jira_matcher = re.search(regexp, head.name)
 
