@@ -25,10 +25,19 @@ When I'm committing with magit (emacs 💖), and I'm presented with the
  and modify the message to be specific to my commit. I imagine it
  should work similarly with whatever tools you use.
 
-== prepare-commit-msg hook
+== .git_template directory
 
-The `prepare-commit-msg` hook should be symlinked/copied into the
-`.git/hooks` directory within each repo that you intend to use it for.
+The `.git_template/` directory should be symlinked/copied into your
+ home directory.  This will be used to populate any new repos with the
+ `hooks/` directory, which has the hooks listed below.
+
+If you'd rather not use this, then remove the `[init]` section from
+ the `.gitconfig`.
+
+This might be a good place to start if you want more information about
+ having a template directory: https://git-scm.com/docs/git-init
+
+== prepare-commit-msg hook
 
 There are a couple of things that it does currently:
 

@@ -9,7 +9,7 @@
 	autocrlf = input
 	safecrlf = warn
 	editor = emacsclient -t -a emacs
-
+	
 [alias]
 	br = branch
 	ci = commit -a
@@ -72,6 +72,9 @@
 [commit]
 	template = /home/grdryn/.git-commit-template
 	gpgsign = true
+
+[init]
+	templatedir = ~/.git_template
 
 [gpg]
 	program = gpg2
