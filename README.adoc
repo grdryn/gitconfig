@@ -47,9 +47,10 @@ There are a couple of things that it does currently:
  branches. 😎
 
 . If http://gitpython.readthedocs.io/en/stable/[GitPython] is
- installed, and the current branch name starts with either `RHMAP-` or
- `FH-`, then it will uncomment the `JIRA_PLACEHOLDER` line in the commit
- message template, and insert a link to the issue on issues.jboss.org.
+ installed, and the current branch name starts with either `AEROGEAR-`
+ or `AGMS-` or 'INTLY-', then it will uncomment the `JIRA_PLACEHOLDER`
+ line in the commit message template, and insert a link to the issue
+ on issues.jboss.org.
 
 == Contributing
 
