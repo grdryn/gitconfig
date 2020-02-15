@@ -33,7 +33,6 @@
 # 📦 Update compiled files or packages
 # ⏪ Revert changes
 # 🔀 Merge branches
-# 📦 Update compiled files or packages
 # 👽 Update code due to external dependencies
 # 🚚 Move or rename files
 # 📄 Add or update license
@@ -58,6 +57,11 @@
 # ⚗ Experimenting new things
 # 🔍 Improving SEO
 # 🏷 Adding or updating types
+# 🌱 Adding or updating seed files
+# 🚩 Adding, updating, or removing feature flags
+# 🥅 Catching errors
+# 💫 Adding or updating animations and transitions
+# 🗑 Deprecating code that needs to be cleaned up.
 
 # JIRA_PLACEHOLDER
 
